@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 // make this contract inherits from: ERC721URIStorage contract
-contract Assignment8 is ERC721URIStorage,Ownable{
+contract Assignment8 is ERC721,ERC721URIStorage, Ownable{
     // declare a private uint called _tokenIdCounter
     uint private _tokenIdCounter;
     // pass name and symbol of the nft token collection
@@ -21,7 +21,6 @@ contract Assignment8 is ERC721URIStorage,Ownable{
     
     function mintNFT(string jsonuri) external onlyOwner {
         // call _mint to mint a new nft to the function caller
-        //uint256 newTokenId = _tokenIdCounter;
         _mint(msg.sender,_tokenIdCounter);
         // set token uri to the token id using _setTokenURI
         _setTokenURI(_tokenIdCounter,jsonuri);
